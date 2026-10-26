@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101512">
+<title>تمرينك | القوة والتحمل</title>
+<style>
+:root{--bg:#0d110f;--panel:#171e19;--panel2:#202a23;--text:#f4f7f4;--muted:#a9b6ad;--green:#a6f36a;--line:#303b33;--red:#ff7f7f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.55}
+header{padding:calc(18px + env(safe-area-inset-top)) 18px 16px;background:linear-gradient(135deg,#1d2c20,#101512);border-bottom:1px solid var(--line)}
+.brand{color:var(--green);font-size:13px;font-weight:800;letter-spacing:.5px}h1{font-size:27px;margin:5px 0 3px}header p{color:var(--muted);margin:0;font-size:14px}
+main{max-width:760px;margin:auto;padding:16px 14px 40px}.tabs{display:flex;gap:8px;overflow:auto;padding-bottom:12px}
+.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:12px;padding:10px 14px;white-space:nowrap;font:inherit}
+.tab.active{background:var(--green);color:#172012;border-color:var(--green);font-weight:800}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;margin:0 0 13px}
+h2{font-size:19px;margin:0 0 12px}h3{font-size:16px;margin:0 0 5px}.muted{color:var(--muted);font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}.stat{background:var(--panel2);padding:12px 8px;border-radius:14px;text-align:center}.stat strong{display:block;font-size:21px;color:var(--green)}.stat span{font-size:12px;color:var(--muted)}
+.exercise{display:flex;align-items:flex-start;gap:11px;padding:13px 0;border-bottom:1px solid var(--line)}.exercise:last-child{border-bottom:0}.num{flex:0 0 31px;height:31px;border-radius:10px;background:var(--panel2);display:grid;place-items:center;color:var(--green);font-weight:800}.exbody{flex:1;min-width:0}.exbody p{margin:3px 0 0;color:var(--muted);font-size:13px}.pill{display:inline-block;background:#26352a;color:var(--green);padding:3px 8px;border-radius:20px;font-size:12px;margin-top:7px}
+button,input,textarea{font:inherit}button{cursor:pointer}.primary{background:var(--green);border:0;color:#172012;font-weight:800;border-radius:13px;padding:13px 16px;width:100%;margin-top:8px}.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px 12px}.danger{color:var(--red)}.row{display:flex;gap:8px;align-items:center}.row>*{flex:1}
+label{display:block;color:var(--muted);font-size:13px;margin:12px 0 5px}input,textarea{width:100%;background:#0f1511;border:1px solid var(--line);border-radius:11px;padding:11px;color:var(--text)}.check{display:flex;align-items:center;gap:10px}.check input{width:20px;height:20px;accent-color:var(--green)}
+.progress{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:12px 0}.progress div{height:100%;background:var(--green);width:0}
+.timer{text-align:center;padding:20px 0}.time{font-size:54px;font-weight:800;letter-spacing:1px}.timer h2{margin-bottom:0}
+.hidden{display:none!important}.historyitem{padding:12px 0;border-bottom:1px solid var(--line)}.historyitem:last-child{border-bottom:0}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:12px}
+</style>
+</head>
+<body>
+<header><div class="brand">برنامجك الشخصي</div><h1>تمرينك</h1><p>القوة والتحمّل · جسم كامل · يوم واحد أسبوعيًا</p></header>
+<main>
+<nav class="tabs" aria-label="التنقل">
+<button class="tab active" data-page="home">الرئيسية</button><button class="tab" data-page="session">ابدأ التمرين</button><button class="tab" data-page="history">السجل</button><button class="tab" data-page="settings">الإعدادات</button>
+</nav>
+<section id="home">
+<div class="stats"><div class="stat"><strong id="exerciseCount">6</strong><span>تمارين أساسية</span></div><div class="stat"><strong id="roundCount">3</strong><span>جولات مستهدفة</span></div><div class="stat"><strong id="sessionCount">0</strong><span>حصص مكتملة</span></div></div>
+<div class="card"><h2>خطة اليوم</h2><p class="muted">ابدأ بالإحماء لمدة 5 دقائق، ثم أكمل التمارين بالترتيب. خذ راحة بين الجولات، وخفف الشدة إذا كنت مرهقًا من العمل.</p><div class="progress"><div id="homeProgress"></div></div><p class="muted" id="progressText">لم تبدأ حصة اليوم بعد.</p><button class="primary" onclick="showPage('session')">ابدأ التمرين ←</button></div>
+<div class="card"><h2>الإحماء · 5 دقائق</h2>
+<div class="exercise"><div class="num">1</div><div class="exbody"><h3>مشي سريع أو قفز خفيف</h3><p>دقيقة تقريبًا، حسب قدرتك.</p></div></div>
+<div class="exercise"><div class="num">2</div><div class="exbody"><h3>تحريك المفاصل</h3><p>الأكتاف والرسغان والرقبة بلطف، دون حركات مؤلمة.</p></div></div>
+<div class="exercise"><div class="num">3</div><div class="exbody"><h3>ظلال الملاكمة</h3><p>دقيقتان من الحركة واللكم الخفيف في الهواء.</p></div></div>
+<div class="exercise"><div class="num">4</div><div class="exbody"><h3>تجهيز عام</h3><p>دقيقة حركة خفيفة قبل البدء.</p></div></div></div>
+<div class="card"><h2>التمارين الأساسية</h2><div id="homeExercises"></div></div>
+</section>
+<section id="session" class="hidden">
+<div class="card"><div class="row"><div><h2 style="margin-bottom:2px">الحصة الحالية</h2><div class="muted" id="sessionSub">الجولة 1 من 3</div></div><button class="secondary" onclick="resetSession()">إعادة البدء</button></div><div class="progress"><div id="sessionProgress"></div></div><div id="currentExercise"></div>
+<div class="row"><button class="secondary" onclick="prevExercise()">السابق</button><button class="primary" style="margin-top:0" onclick="completeExercise()">تمّ التمرين ✓</button></div>
+</div>
+<div class="card"><h2>مؤقت الراحة</h2><div class="timer"><div class="time" id="timeDisplay">01:30</div><p class="muted">اختر مدة الراحة بين الجولات</p><div class="row"><button class="secondary" onclick="startTimer(90)">90 ثانية</button><button class="secondary" onclick="startTimer(120)">دقيقتان</button></div><button class="secondary" style="margin-top:8px;width:100%" onclick="stopTimer()">إيقاف المؤقت</button></div></div>
+<div class="card"><h2>ملاحظة الحصة</h2><textarea id="sessionNote" rows="3" placeholder="كيف كان أداؤك؟ هل شعرت بإرهاق؟"></textarea><button class="primary" onclick="finishSession()">حفظ الحصة</button></div>
+</section>
+<section id="history" class="hidden"><div class="card"><h2>سجل التمارين</h2><p class="muted">تُحفظ الحصص على هذا الجهاز في هذا المتصفح.</p><div id="historyList"></div><button class="secondary danger" onclick="clearHistory()">مسح السجل</button></div></section>
+<section id="settings" class="hidden"><div class="card"><h2>إعدادات خطتك</h2><label for="rounds">عدد الجولات المستهدفة</label><input id="rounds" type="number" min="1" max="6" value="3"><label for="rest">مدة الراحة الافتراضية (بالثواني)</label><input id="rest" type="number" min="30" max="300" value="90"><button class="primary" onclick="saveSettings()">حفظ الإعدادات</button></div>
+<div class="card"><h2>نسخة احتياطية</h2><p class="muted">صدّر سجلّك وإعداداتك إلى ملف JSON للاحتفاظ بنسخة.</p><button class="secondary" style="width:100%" onclick="exportData()">تصدير البيانات</button><label for="importFile">استيراد نسخة محفوظة</label><input id="importFile" type="file" accept=".json,application/json" onchange="importData(event)"></div>
+<div class="card"><h2>تنبيه السلامة</h2><p class="muted">هذا البرنامج لا يغني عن التقييم الطبي. أوقف التمرين عند ألم حاد أو دوخة أو ألم في الصدر. لا تتمرن حتى الإنهاك؛ حافظ على الحركة الصحيحة.</p></div></section>
+<footer>نسخة أولية شخصية · تُحفظ البيانات محليًا في المتصفح</footer>
+</main>
+<script>
+const defaultExercises=[
+{name:"السكوات (Squats)",dose:"15–20 تكرارًا",benefit:"تقوية الأرجل ودعم الحركة والركلات."},
+{name:"الضغط (Push-ups)",dose:"10–15 تكرارًا",benefit:"تقوية الصدر والأكتاف والعضلات المساعدة."},
+{name:"الطعن (Lunges)",dose:"10 تكرارات لكل رجل",benefit:"تحسين التوازن وتقوية عضلات الأرجل."},
+{name:"تسلق الجبال (Mountain Climbers)",dose:"30 ثانية",benefit:"تنشيط الجذع والأكتاف وتحسين اللياقة."},
+{name:"البلانك (Plank)",dose:"30–45 ثانية",benefit:"تقوية عضلات الجذع وتثبيت الجسم."},
+{name:"البيربيز (Burpees)",dose:"8–10 تكرارات",benefit:"رفع اللياقة القلبية والتنفسية؛ خفف السرعة حسب قدرتك."}
+];
+let settings=load("fit_settings",{rounds:3,rest:90});
+let history=load("fit_history",[]);
+let state={round:1,index:0,done:[],started:false};
+let timerInterval=null,remaining=90;
+function load(k,f){try{let x=localStorage.getItem(k);return x?JSON.parse(x):f}catch(e){return f}}
+function store(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){alert("تعذّر الحفظ في هذا الوضع. جرّب فتح البرنامج من رابط ويب في Safari.")}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderExercises(){document.getElementById("homeExercises").innerHTML=defaultExercises.map((e,i)=>`<div class="exercise"><div class="num">${i+1}</div><div class="exbody"><h3>${esc(e.name)}</h3><p>${esc(e.benefit)}</p><span class="pill">${esc(e.dose)}</span></div></div>`).join("");}
+function showPage(p){document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));document.getElementById(p).classList.remove("hidden");document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.page===p));if(p==="session")renderSession();if(p==="history")renderHistory();window.scrollTo(0,0)}
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+function renderSession(){let e=defaultExercises[state.index];document.getElementById("sessionSub").textContent=`الجولة ${state.round} من ${settings.rounds} · التمرين ${state.index+1} من ${defaultExercises.length}`;let total=settings.rounds*defaultExercises.length;let done=state.done.length;document.getElementById("sessionProgress").style.width=(done/total*100)+"%";document.getElementById("currentExercise").innerHTML=`<div style="padding:18px 0"><div class="muted">التمرين ${state.index+1}</div><h2 style="font-size:24px">${esc(e.name)}</h2><div class="pill">${esc(e.dose)}</div><p class="muted">${esc(e.benefit)}</p><p>${state.done.includes(`${state.round}-${state.index}`)?"✓ تم تحديد هذا التمرين كمكتمل":"نفّذ الحركة بتحكم وتوقف إذا شعرت بألم غير طبيعي."}</p></div>`;document.getElementById("rounds").value=settings.rounds;document.getElementById("rest").value=settings.rest;}
+function completeExercise(){let k=`${state.round}-${state.index}`;if(!state.done.includes(k))state.done.push(k);if(state.index<defaultExercises.length-1)state.index++;else if(state.round<settings.rounds){state.round++;state.index=0;startTimer(settings.rest)}else{renderSession();document.getElementById("currentExercise").innerHTML="<h2>أكملت جميع التمارين! 🎉</h2><p class='muted'>احفظ الحصة لتسجيل إنجازك.</p>";document.getElementById("sessionProgress").style.width="100%";return}renderSession()}
+function prevExercise(){if(state.index>0)state.index--;else if(state.round>1){state.round--;state.index=defaultExercises.length-1}renderSession()}
+function resetSession(){if(confirm("هل تريد إعادة بدء الحصة الحالية؟")){stopTimer();state={round:1,index:0,done:[],started:true};document.getElementById("sessionNote").value="";renderSession()}}
+function finishSession(){let total=settings.rounds*defaultExercises.length;history.unshift({date:new Date().toISOString(),rounds:state.round,completed:state.done.length,total,note:document.getElementById("sessionNote").value||"",exercises:defaultExercises.map(e=>e.name)});store("fit_history",history);state={round:1,index:0,done:[],started:false};renderHome();renderHistory();alert("تم حفظ الحصة على جهازك.");showPage("history")}
+function startTimer(seconds){stopTimer();remaining=seconds;updateTimer();timerInterval=setInterval(()=>{remaining--;updateTimer();if(remaining<=0){stopTimer();if("vibrate" in navigator)navigator.vibrate(200);alert("انتهت الراحة. استعد للتمرين التالي.")}},1000)}
+function stopTimer(){if(timerInterval)clearInterval(timerInterval);timerInterval=null}
+function updateTimer(){let m=Math.floor(remaining/60),s=remaining%60;document.getElementById("timeDisplay").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")}
+function renderHome(){document.getElementById("sessionCount").textContent=history.length;document.getElementById("roundCount").textContent=settings.rounds;document.getElementById("exerciseCount").textContent=defaultExercises.length;document.getElementById("homeProgress").style.width=(state.done.length/(settings.rounds*defaultExercises.length)*100)+"%";document.getElementById("progressText").textContent=state.done.length?`أنجزت ${state.done.length} من ${settings.rounds*defaultExercises.length} خطوة في الحصة الحالية.`:"لم تبدأ حصة اليوم بعد."}
+function renderHistory(){let el=document.getElementById("historyList");if(!history.length){el.innerHTML='<p class="muted">لا توجد حصص مسجلة بعد. أكمل أول حصة ثم احفظها.</p>';return}el.innerHTML=history.map(h=>`<div class="historyitem"><strong>${new Date(h.date).toLocaleDateString("ar",{year:"numeric",month:"long",day:"numeric"})}</strong><p class="muted">الجولات: ${h.rounds} · الخطوات المكتملة: ${h.completed} من ${h.total}</p>${h.note?`<p>${esc(h.note)}</p>`:""}</div>`).join("")}
+function saveSettings(){let r=Math.max(1,Math.min(6,parseInt(document.getElementById("rounds").value)||3));let rest=Math.max(30,Math.min(300,parseInt(document.getElementById("rest").value)||90));settings={rounds:r,rest};store("fit_settings",settings);renderHome();renderSession();alert("تم حفظ الإعدادات.");}
+function clearHistory(){if(confirm("مسح جميع الحصص المحفوظة؟ لا يمكن التراجع عن ذلك.")){history=[];store("fit_history",history);renderHistory();renderHome()}}
+function exportData(){let blob=new Blob([JSON.stringify({settings,history},null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="tamreen-backup.json";a.click();URL.revokeObjectURL(a.href)}
+function importData(ev){let f=ev.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(d.settings)settings=d.settings;if(Array.isArray(d.history))history=d.history;store("fit_settings",settings);store("fit_history",history);renderHome();renderHistory();alert("تم استيراد النسخة الاحتياطية.")}catch(e){alert("الملف غير صالح.")}};r.readAsText(f)}
+renderExercises();renderHome();renderHistory();renderSession();
+</script>
+</body></html>
